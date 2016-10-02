@@ -298,6 +298,7 @@ but the necessary info to reproduce all the libraries it relies on and
 the file that starts up the app.
 
 * You deployed this simple app to Heroku.
+* Our app name is hangnewton
 
 -----
 
