@@ -40,6 +40,9 @@ class HangpersonApp < Sinatra::Base
   post '/guess' do
     letter = params[:guess].to_s[0]
     ### YOUR CODE HERE ###
+    #error for guessing non letter char
+    #error for repeated word
+    #successful guess
     redirect '/show'
   end
   
