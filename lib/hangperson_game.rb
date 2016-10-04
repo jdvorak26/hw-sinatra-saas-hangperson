@@ -38,8 +38,18 @@ class HangpersonGame
   end
   
   def word_with_guesses
-    
+    #
+    @guesses.each_char do |i|
+      
+      if @word.include? i
+        word.gsub(/[a-z]/i , i)
+      else 
+        word.gsub(/[a-z]/i , '-')
+      end
+    return word
+    end
   end
+  
   
   def check_win_or_lose
     if @guesses.length == @word.length
