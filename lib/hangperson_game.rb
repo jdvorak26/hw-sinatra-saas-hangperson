@@ -17,18 +17,37 @@ class HangpersonGame
   end
   
   def guess(letter)
-    if @word.include? letter
-      @guesses << letter
-     else
-      @wrong_guesses << letter
+    
+    if letter !~ /[a-z]/i || letter == nil || letter.empty?
+      raise ArgumentError
     end
+    
+    #is case insensitive
+    letter = letter.downcase
+    
+    if !@guesses.include? letter and !@wrong_guesses.include? letter
+      if @word.include? letter
+        @guesses << letter
+       else
+          @wrong_guesses << letter
+      end
+    else
+      return false
+    end
+  
+  end
+  
+  def word_with_guesses
+    
   end
   
   def check_win_or_lose
-    if @guesses == word
+    if @guesses.length == @word.length
       :win
     elsif @wrong_guesses.length >= 7
       :lose
+    else
+      :play
     end
   end
   
