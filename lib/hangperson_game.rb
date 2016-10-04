@@ -29,11 +29,11 @@ class HangpersonGame
     if !@guesses.include? letter and !@wrong_guesses.include? letter
       if @word.include? letter
         @guesses << letter
-        for @word.each_char do |i|
-          if @word[i] == letter and @word_with_guesses[i] = '-'
-            @word_with_guesses[i] = letter
-          end
+          for i in 0...@word.length
+        if @word[i] == letter && @word_with_guesses[i] = '-'
+          @word_with_guesses[i] = letter 
         end
+      end
       else
         @wrong_guesses << letter
       end
