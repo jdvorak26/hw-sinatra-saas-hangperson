@@ -14,7 +14,7 @@ class HangpersonGame
     @word = word
     @guesses = ''
     @wrong_guesses = ''
-    @word_with_guesses = word.downcase.gsub(/[a-z]/i, '-')
+    @word_with_guesses = '-' * word.length
   end
   
   def guess(letter)
@@ -29,31 +29,17 @@ class HangpersonGame
     if !@guesses.include? letter and !@wrong_guesses.include? letter
       if @word.include? letter
         @guesses << letter
+        for @word.each_char do |i|
+          if @word[i] == letter and @word_with_guesses[i] = '-'
+            @word_with_guesses[i] = letter
+          end
+        end
       else
         @wrong_guesses << letter
       end
     else
       return false
     end
-  
-  end
-  
-<<<<<<< HEAD
-  def word_with_guesses
-    
-    @guesses.each_char do |i|
-      
-      if @word.include? i
-        word.gsub(/[a-z]/i , i)
-      else 
-        word.gsub(/[a-z]/i , '-')
-      end
-    return word
-    end
-=======
-  def update_displayed
-   
->>>>>>> 62e55bbdec0ecf8cb1edbdfd868e9bdfed7e59cf
   end
   
   
@@ -73,5 +59,4 @@ class HangpersonGame
     uri = URI('http://watchout4snakes.com/wo4snakes/Random/RandomWord')
     Net::HTTP.post_form(uri ,{}).body
   end
-
 end
