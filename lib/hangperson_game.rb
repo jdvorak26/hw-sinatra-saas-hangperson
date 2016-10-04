@@ -28,8 +28,8 @@ class HangpersonGame
     if !@guesses.include? letter and !@wrong_guesses.include? letter
       if @word.include? letter
         @guesses << letter
-       else
-          @wrong_guesses << letter
+      else
+        @wrong_guesses << letter
       end
     else
       return false
@@ -38,7 +38,7 @@ class HangpersonGame
   end
   
   def word_with_guesses
-    #
+    
     @guesses.each_char do |i|
       
       if @word.include? i

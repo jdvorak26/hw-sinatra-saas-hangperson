@@ -40,12 +40,16 @@ class HangpersonApp < Sinatra::Base
   post '/guess' do
     letter = params[:guess].to_s[0]
     ### YOUR CODE HERE ###
-    #if letter != character
-    #set flash[:message] = "Invalid guess."
-    #if repeated word
-    #set flash[:message] = "You have already guessed that letter."
-    #if successful
-    #successful guess
+    #INVOKE GUESS METHOD FROM GAME LOGIC
+    
+    if letter
+      flash[:message] = "Invalid guess."
+    end
+    
+    if letter
+      flash[:message] = "You have already guessed that letter."
+    end
+    
     redirect '/show'
   end
   
@@ -61,11 +65,13 @@ class HangpersonApp < Sinatra::Base
   
   get '/win' do
     ### YOUR CODE HERE ###
+    
     erb :win # You may change/remove this line
   end
   
   get '/lose' do
     ### YOUR CODE HERE ###
+    
     erb :lose # You may change/remove this line
   end
   
