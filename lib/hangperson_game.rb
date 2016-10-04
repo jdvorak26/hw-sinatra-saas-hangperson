@@ -8,12 +8,13 @@ class HangpersonGame
 #  def initialize()
  # end
  
-  attr_accessor :word, :guesses, :wrong_guesses
+  attr_accessor :word, :guesses, :wrong_guesses, :word_with_guesses
   
   def initialize(word)
     @word = word
     @guesses = ''
     @wrong_guesses = ''
+    @word_with_guesses = word.downcase.gsub(/[a-z]/i, '-')
   end
   
   def guess(letter)
@@ -37,6 +38,7 @@ class HangpersonGame
   
   end
   
+<<<<<<< HEAD
   def word_with_guesses
     
     @guesses.each_char do |i|
@@ -48,6 +50,10 @@ class HangpersonGame
       end
     return word
     end
+=======
+  def update_displayed
+   
+>>>>>>> 62e55bbdec0ecf8cb1edbdfd868e9bdfed7e59cf
   end
   
   
