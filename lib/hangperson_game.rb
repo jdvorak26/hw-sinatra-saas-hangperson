@@ -8,21 +8,29 @@ class HangpersonGame
 #  def initialize()
  # end
  
-  attr_accessor :word
-  attr_accessor :guesses
-  attr_accessor :guess
-  attr_accessor :wrong_guesses
+  attr_accessor :word, :guesses, :wrong_guesses
   
   def initialize(word)
     @word = word
-    @guess = guess
     @guesses = ''
     @wrong_guesses = ''
   end
   
-  #def guess
-    
-  #end
+  def guess(letter)
+    if @word.include? letter
+      @guesses << letter
+     else
+      @wrong_guesses << letter
+    end
+  end
+  
+  def check_win_or_lose
+    if @guesses == word
+      :win
+    elsif @wrong_guesses.length >= 7
+      :lose
+    end
+  end
   
   def self.get_random_word
     require 'uri'
