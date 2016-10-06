@@ -8,12 +8,13 @@ class HangpersonGame
 #  def initialize()
  # end
  
-  attr_accessor :word, :guesses, :wrong_guesses, :word_with_guesses
+  attr_accessor :word, :guesses, :wrong_guesses, :word_with_guesses, :check_win_or_lose
   
   def initialize(word)
     @word = word
     @guesses = ''
     @wrong_guesses = ''
+    @check_win_or_lose = :play
     @word_with_guesses = '-' * word.length
   end
   
@@ -30,26 +31,33 @@ class HangpersonGame
       if @word.include? letter
         @guesses << letter
           for i in 0...@word.length
-        if @word[i] == letter && @word_with_guesses[i] = '-'
-          @word_with_guesses[i] = letter 
-        end
-      end
+            if @word[i] == letter && @word_with_guesses[i] = '-'
+              @word_with_guesses[i] = letter 
+            end
+          end
+        check_end('win?')
+          
       else
         @wrong_guesses << letter
+        check_end('lose?')
       end
     else
       return false
     end
   end
   
-  
-  def check_win_or_lose
-    if @guesses.length == @word.length
-      :win
-    elsif @wrong_guesses.length >= 7
-      :lose
+  def check_end(type)
+    if type == 'win?'
+      for i in 0..@word.length-1
+        if @word_with_guesses[i] == '-'
+          return
+        end
+      end
+      @check_win_or_lose = :win
     else
-      :play
+      if @wrong_guesses.length >= 7
+        @check_win_or_lose =:lose
+      end
     end
   end
   
